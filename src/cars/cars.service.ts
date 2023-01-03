@@ -7,21 +7,11 @@ import { CreateCarDto, UpdateCarDto } from './dto';
 @Injectable()
 export class CarsService {
   private cars: Car[] = [
-    {
-      id: uuid(),
-      brand: 'Toyota',
-      model: 'Corolla',
-    },
-    {
-      id: uuid(),
-      brand: 'Honda',
-      model: 'Civic',
-    },
-    {
-      id: uuid(),
-      brand: 'Jeep',
-      model: 'Cherokee',
-    },
+    // {
+    //   id: uuid(),
+    //   brand: 'Toyota',
+    //   model: 'Corolla',
+    // }
   ];
 
   //Metodo para devolver todos los datos
@@ -91,5 +81,9 @@ export class CarsService {
   delete(id: string) {
     const car = this.findOneById(id) // Verificamos por el ID si el dato existe y si no manda una excepción
     this.cars = this.cars.filter(car => car.id !== id) // Devuelve los datos diferentes al ID que se manda 
+  }
+
+  fillCarsWithSeedData(cars: Car[]) {
+    this.cars = cars
   }
 }
